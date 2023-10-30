@@ -1,0 +1,13 @@
+<%- include("templates/cabecera",{titulo:'Insertar un nuevo libro'}) %>
+    <div class="container">
+        <h1>Insertar Libro</h1>
+        <form action="/libros" method="POST">
+            <input type="text" name="isbn" id="" class="form-control my-2" placeholder="Agrega el ISBN">
+            <input type="text" name="titulo" id="" class="form-control my-2" placeholder="Agrega el título del libro">
+            <input type="text" name="autor" id="" class="form-control my-2" placeholder="Agrega el autor del libro">
+            <input type="text" name="anio" id="" class="form-control my-2" placeholder="Agrega el año de publicacion">
+            <input type="text" name="editorial" id="" class="form-control my-2" placeholder="Agrega la editorial del libro">
+            <button class="btn btn-success btn-block" type="submit">Insertar nuevo libro</button>
+        </form>
+    </div>
+<%- include("templates/footer") %>
