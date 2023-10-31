@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 /* Conexion a la base de datos con mongo y mongoose */
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/biblio',
+mongoose.connect('mongodb://127.0.0.1:27017/Zapateria',
 {useNewUrlParser:true,useUnifiedTopology:true})
     .then(()=>console.log('Base de datos conectada correctamente'))
     .catch(e=>console.log(e));
@@ -22,7 +22,7 @@ app.use(express.static(__dirname + "/public"));
 
 //Rutas web
 app.use('/', require('./router/rutasweb'));
-app.use('/libros', require('./router/Libros'));
+app.use('/zapatos', require('./router/Zapatos'));
 
 
 //estas estaban al inicio antes de cambiarlas a rutasweb

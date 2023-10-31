@@ -1,13 +1,18 @@
-<%- include("templates/cabecera",{titulo:'Insertar un nuevo libro'}) %>
+<%- include("templates/cabecera",{titulo:'Insertar un nuevo Zapato'}) %>
     <div class="container">
-        <h1>Insertar Libro</h1>
-        <form action="/libros" method="POST">
-            <input type="text" name="isbn" id="" class="form-control my-2" placeholder="Agrega el ISBN">
-            <input type="text" name="titulo" id="" class="form-control my-2" placeholder="Agrega el título del libro">
-            <input type="text" name="autor" id="" class="form-control my-2" placeholder="Agrega el autor del libro">
-            <input type="text" name="anio" id="" class="form-control my-2" placeholder="Agrega el año de publicacion">
-            <input type="text" name="editorial" id="" class="form-control my-2" placeholder="Agrega la editorial del libro">
-            <button class="btn btn-success btn-block" type="submit">Insertar nuevo libro</button>
+        <h1>Insertar Zapato</h1>
+        <form action="/zapatos" method="POST">
+            <input type="text" name="id" id="" class="form-control my-2" placeholder="Agrega el ID del zapato">
+            <input type="text" name="marca" id="" class="form-control my-2" placeholder="Agrega la marca del zapato">
+            <input type="text" name="color" id="" class="form-control my-2" placeholder="Agrega el color del zapato">
+            <input type="text" name="costo" id="" class="form-control my-2" placeholder="Agrega el costo del zapato">
+            <input type="text" name="tamanio" id="" class="form-control my-2" placeholder="Agrega el tamanio del zapato">
+            <input type="text" name="tipo" id="" class="form-control my-2" placeholder="Agrega el tipo del zapato">
+            <input type="text" name="numeroZapato" id="" class="form-control my-2" placeholder="Agrega el numero de zapato">
+            <input type="text" name="precio" id="" class="form-control my-2" placeholder="Agrega el precio del zapato">
+            <input type="text" name="material" id="" class="form-control my-2" placeholder="Agrega el material del zapato">
+
+            <button class="btn btn-success btn-block" type="submit">Insertar nuevo zapato</button>
         </form>
     </div>
 <%- include("templates/footer") %>

@@ -1,0 +1,43 @@
+<%- include("templates/cabecera",{titulo:'Pagina de Inicio'}) %>
+    <div class="container">
+        <h1>CRUD de Zapatos con Mongo y Express</h1>
+        <div >
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Costo</th>
+                        <th scope="col">Tamanio</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Numero de Zapato</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Material</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (arrayZapatos.length> 0) { %>
+                        <% arrayZapatos.forEach(zapato=> { %>
+                            <tr class="">
+                                <td scope="row"><%= zapato._id %></td>
+                                <td><%= zapato.marca %></td>
+                                <td><%= zapato.color %></td>
+                                <td><%= zapato.costo.proveedor %></td>
+                                <td><%= zapato.tamanio %></td>
+                                <td><%= zapato.tipo %></td>
+                                <td><%= zapato.numeroZapato %></td>
+                                <td><%= zapato.precio %></td>
+                                <td><%= zapato.material %></td>
+                                <td>
+                                    <!-- usar libro._id si pasamos el object id -->
+                                    <a href="/zapatos/<%= zapato._id %>" class="btn btn-warning btn-sm">editar</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include("templates/footer") %>

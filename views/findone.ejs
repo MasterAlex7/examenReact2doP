@@ -1,28 +1,28 @@
 <%- include("templates/cabecera",{titulo:'Buscar un libro'}) %>
     <div class="container">
-        <h1>Detalle de un solo libro</h1>
+        <h1>Detalle de un Zapato</h1>
         <% if (error) { %>
             <p>
                 <%= mensaje %>
             </p>
-            <a href="/libros" class="btn btn-block btn-dark">Volver al listado de libros</a>
+            <a href="/zapatos" class="btn btn-block btn-dark">Volver al listado de zapatos</a>
             <% } %>
                 <% if (!error) { %>
-                    <form id="formularioEditar"> <!-- data-id="<%= libro._id %>" -->
-                        <input placeholder="Ingresa el ISBN" type="text" class="form-control my-2" name="isbn"
-                            value="<%= libro.isbn %>" id="isbnInput">
-                        <input placeholder="Ingresa el titulo del libro" type="text" class="form-control my-2"
-                            name="titulo" value="<%= libro.titulo %>" id="tituloInput">
-                        <input placeholder="Ingresa el Autor del libro" type="text" class="form-control my-2"
-                            name="autor" value="<%= libro.autor %>" id="autorInput">
-                        <input placeholder="Ingresa el año de edición" type="text" class="form-control my-2" name="anio"
-                            value="<%= libro.anio %>" id="anioInput">
-                        <input placeholder="Ingresa la editorial del libro" type="text" class="form-control my-2"
-                            name="editorial" value="<%= libro.editorial %>" id="editorialInput">
+                    <form id="formularioEditar">
+                        <input placeholder="Ingresa el ID" type="text" class="form-control my-2" name="id"
+                            value="<%= zapato._id %>" id="idInput">
+                        <input placeholder="Ingresa la marca del Zapato" type="text" class="form-control my-2"
+                            name="marca" value="<%= zapato.marca %>" id="marcaInput">
+                        <input placeholder="Ingresa el numero de Zapato" type="text" class="form-control my-2"
+                            name="numZapato" value="<%= zapato.numeroZapato %>" id="numZapatoInput">
+                        <input placeholder="Ingresa el precio" type="text" class="form-control my-2" name="precio"
+                            value="<%= zapato.precio %>" id="precioInput">
+                        <input placeholder="Ingresa el material del zapato" type="text" class="form-control my-2"
+                            name="material" value="<%= zapato.material %>" id="materialInput">
                         <button class="btn btn-warning btn-block" type="submit">Editar</button>
                         <hr>
                         <button class="btn btn-danger btn-sm mt-3 btn-block" id="btnEliminar"
-                            data-id="<%= libro.isbn %>">Eliminar</button>
+                            data-id="<%= zapato._id %>">Eliminar</button>
                     </form>
 
                     <% } %>
@@ -33,16 +33,16 @@
             const btnEliminar = document.querySelector('#btnEliminar')
             btnEliminar.addEventListener('click', async () => {
                 console.log('El boton de eliminar está funcionando');
-                const isbn = btnEliminar.dataset.id
-                console.log('isbn', isbn)
+                const id = btnEliminar.dataset.id
+                console.log('id', id)
                 try {
-                    const data = await fetch(`/libros/${isbn}`, {
+                    const data = await fetch(`/zapatos/${id}`, {
                         method: 'delete'
                     })
                     const res = await data.json()
                     console.log(res)
                     if (res.estado) {
-                        window.location.href = '/libros'
+                        window.location.href = '/zapatos'
                     }
 
                 } catch (error) {
@@ -53,36 +53,29 @@
             formularioEditar.addEventListener('submit', async (e) => {
                 e.preventDefault()
                 console.log('Actualizado')
-                /* primera forma de capturar los datos del formulario
-                const isbn = formularioEditar.elements['isbn'].value
-                const titulo = formularioEditar.elements['titulo'].value
-                const autor = formularioEditar.elements['autor'].value
-                const anio = formularioEditar.elements['anio'].value
-                const editorial = formularioEditar.elements['editorial'].value */
 
                 /* Segunda forma de capturar los datos del formulario */
-                const isbn = document.querySelector('#isbnInput').value
-                const titulo = document.querySelector('#tituloInput').value
-                const autor = document.querySelector('#autorInput').value
-                const anio = document.querySelector('#anioInput').value
-                const editorial = document.querySelector('#editorialInput').value
+                const _id = document.querySelector('#idInput').value
+                const marca = document.querySelector('#marcaInput').value
+                const numeroZapato = document.querySelector('#numZapatoInput').value
+                const precio = document.querySelector('#precioInput').value
+                const material = document.querySelector('#materialInput').value
 
 
                 const id = formularioEditar.dataset.id
-                console.log(id, isbn + ' , ' + titulo + ' , ' + autor + ' , ' + anio + ' , ' + editorial);
                 try {
-                    const data = await fetch(`/libros/${isbn}`, {
+                    const data = await fetch(`/zapatos/${_id}`, {
                         method: 'put',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        /* body: { isbn: isbn, titulo: titulo, autor: autor, anio: anio, editorial: editorial } */
-                        body: JSON.stringify({ isbn, titulo, autor, anio, editorial })
+                        
+                        body: JSON.stringify({ marca, numeroZapato, precio, material })
                     })
                     const res = await data.json()
                     console.log(res)
                     if (res.estado) {
-                        window.location.href='/libros'
+                        window.location.href='/zapatos'
                     } else {
                         console.log(res)
                     }
