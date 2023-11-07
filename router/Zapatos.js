@@ -65,6 +65,17 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/:material', async (req, res) => {
+    const material = req.params.material;
+    try {
+        const zapatoDB = await Zapato.find({ material: material })
+
+        res.json(zapatoDB)
+    } catch (error) {
+        console.log(error)
+    }
+});
+
 /* Para eliminar un solo documento en la base de datos de Mongo */
 router.delete('/:id', async (req, res) => {
     const id = req.params.id
